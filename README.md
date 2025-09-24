@@ -145,4 +145,4 @@ The application includes 6 sample products:
 
 ## License
 
-This project is created for educational purposes.
+By - Anurag Majumdar.

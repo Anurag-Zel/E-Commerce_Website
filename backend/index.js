@@ -29,7 +29,7 @@ const products = [
     name: "Laptop Stand",
     description: "Adjustable aluminum laptop stand for better ergonomics",
     price: 49.99,
-    image: "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=300&h=300&fit=crop"
+    image: "https://5.imimg.com/data5/SELLER/Default/2020/12/AX/OM/LD/80153581/61qaxmytdgl-sl1482--1000x1000.jpg"
   },
   {
     id: 4,
@@ -50,7 +50,7 @@ const products = [
     name: "Monitor Mount",
     description: "Dual monitor mount with height adjustment",
     price: 79.99,
-    image: "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=300&h=300&fit=crop"
+    image: "https://m.media-amazon.com/images/I/512Fu3ZsYAL.jpg"
   },
   {
     id: 7,
@@ -64,42 +64,42 @@ const products = [
     name: "Gaming Chair",
     description: "Ergonomic gaming chair with lumbar support",
     price: 249.99,
-    image: "https://images.unsplash.com/photo-1592078615290-033ee584e267?w=300&h=300&fit=crop"
+    image: "https://www.greensoul.online/cdn/shop/files/r1_650x.jpg?v=1756712404"
   },
   {
     id: 9,
     name: "USB-C Hub",
     description: "Multi-port USB-C hub with HDMI and Ethernet",
     price: 59.99,
-    image: "https://images.unsplash.com/photo-1583394838336-acd977736f90?w=300&h=300&fit=crop"
+    image: "https://m.media-amazon.com/images/I/61QbS525pgL.jpg"
   },
   {
     id: 10,
     name: "Wireless Charger",
     description: "Fast wireless charging pad for smartphones",
     price: 34.99,
-    image: "https://images.unsplash.com/photo-1583394838336-acd977736f90?w=300&h=300&fit=crop"
+    image: "https://m.media-amazon.com/images/I/61e4Ec6tpiL.jpg"
   },
   {
     id: 11,
     name: "LED Desk Lamp",
     description: "Adjustable LED desk lamp with touch control",
     price: 45.99,
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop"
+    image: "https://m.media-amazon.com/images/I/61QPRxJk3dL.jpg"
   },
   {
     id: 12,
     name: "Webcam HD",
     description: "1080p HD webcam with built-in microphone",
     price: 69.99,
-    image: "https://images.unsplash.com/photo-1587560699334-cc4ff634909a?w=300&h=300&fit=crop"
+    image: "https://m.media-amazon.com/images/I/51GD-1D3ocL.jpg"
   },
   {
     id: 13,
     name: "External SSD",
     description: "1TB portable SSD with USB 3.0 connectivity",
     price: 149.99,
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=300&fit=crop"
+    image: "https://m.media-amazon.com/images/I/71bBCTIvIIL.jpg"
   },
   {
     id: 14,
