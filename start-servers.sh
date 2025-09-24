@@ -12,7 +12,7 @@ sleep 3
 
 # Start frontend server
 echo "🎨 Starting Frontend Server (Port 3000)..."
-cd ../frontend && npm start &
+cd ./frontend && npm start &
 FRONTEND_PID=$!
 
 echo "✅ Both servers are starting..."
