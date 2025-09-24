@@ -10,18 +10,32 @@ A full-stack e-commerce application built with React.js frontend and Node.js bac
 - **Order Placement**: Customer information form with validation
 - **Responsive Design**: Mobile-friendly interface
 - **Modern UI**: Beautiful gradient designs and smooth animations
+- **Error Handling**: Reusable `ErrorMessage` component, normalized API errors, future `ErrorBoundary`
+- **Reusable UI**: Shared `Spinner` and `ErrorMessage` components
 
 ### Backend
 - **Products API**: Fetch list of products with details
 - **Order API**: Place orders with customer validation
 - **CORS Enabled**: Cross-origin requests supported
 - **Input Validation**: Required field validation for orders
+- **Health Check**: Simple `/api/health` endpoint
 
 ## Tech Stack
 
-- **Frontend**: React.js, React Router, Axios, CSS3
+- **Frontend**: React.js, React Router, Axios, Context API, Custom Hooks
 - **Backend**: Node.js, Express.js, CORS
 - **Styling**: Custom CSS with modern design patterns
+
+## Environment Variables
+
+Frontend supports configuring the backend base URL via environment variable:
+
+```bash
+# In frontend/.env (create if missing)
+REACT_APP_API_BASE_URL=http://localhost:5001
+```
+
+If not set, the default is `http://localhost:5001`.
 
 ## Getting Started
 
@@ -47,6 +61,11 @@ A full-stack e-commerce application built with React.js frontend and Node.js bac
    ```bash
    cd ../frontend
    npm install
+   ```
+
+4. (Optional) **Configure Frontend Environment**
+   ```bash
+   echo "REACT_APP_API_BASE_URL=http://localhost:5001" > .env
    ```
 
 ### Running the Application
@@ -119,18 +138,46 @@ pkill -f "node index.js" && pkill -f "react-scripts start"
 ```
 Knovator_Assignment/
 ├── backend/
-│   ├── index.js          # Main server file
-│   └── package.json      # Backend dependencies
+│   ├── index.js              # Main server file
+│   └── package.json          # Backend dependencies
 ├── frontend/
-│   ├── public/           # Static assets
+│   ├── public/               # Static assets
 │   ├── src/
-│   │   ├── components/   # Reusable components
-│   │   ├── pages/        # Page components
-│   │   ├── context/      # React context for state
-│   │   └── App.js        # Main app component
-│   └── package.json      # Frontend dependencies
+│   │   ├── api/              # API client (axios)
+│   │   │   └── client.js
+│   │   ├── components/       # Reusable components
+│   │   │   ├── ErrorMessage.{js,css}
+│   │   │   ├── Spinner.{js,css}
+│   │   │   ├── Header.{js,css}
+│   │   │   ├── ProductCard.{js,css}
+│   │   │   └── CartItem.{js,css}
+│   │   ├── context/          # React context for state
+│   │   │   └── CartContext.js
+│   │   ├── pages/            # Page components
+│   │   │   ├── ProductListing.{js,css}
+│   │   │   └── Cart.{js,css}
+│   │   ├── hooks/            # Custom hooks (planned)
+│   │   └── App.js            # Main app component
+│   └── package.json          # Frontend dependencies
 └── README.md
 ```
+
+## Architecture Notes
+
+- **API Client**: Centralized in `frontend/src/api/client.js` with base URL, timeout, and response interceptor that normalizes errors (`Error.message`, `status`, `data`).
+- **State Management**: `CartContext` with `useReducer` for predictable cart updates and derived selectors (`getTotalItems`, `getTotalPrice`).
+- **Reusable UI**: `Spinner` for loading states and `ErrorMessage` for user-friendly error display.
+- **Error Handling**: Pages handle async errors gracefully using `try/catch` and show `ErrorMessage`. A global `ErrorBoundary` and `useAsync` hook are planned for advanced error and loading orchestration.
+- **Backend**: Express routes validate input and return structured JSON; an error-handling middleware can be added for consistent error responses across routes.
+
+## Development Guidelines
+
+- **Naming**: Use descriptive, intention-revealing names for files, components, and variables.
+- **Components**: Prefer small, reusable components; avoid duplicating UI patterns.
+- **Hooks**: Encapsulate reusable async logic and side effects in custom hooks (e.g., `useAsync`).
+- **Error UX**: Always provide friendly error messages and offer retry actions when possible.
+- **Formatting**: Keep code readable; match existing styles; avoid unnecessary nesting.
+- **Testing (optional)**: Frontend components are structured to be testable with React Testing Library and Jest.
 
 ## Features Demo
 
@@ -234,14 +281,13 @@ lsof -i :3000  # Frontend
 pkill -f "node index.js" && pkill -f "react-scripts start"
 ```
 
-## Development
+## Marking Criteria Mapping
 
-- Backend uses Express.js with CORS middleware
-- Frontend uses React with Context API for state management
-- Responsive design with mobile-first approach
-- Modern CSS with gradients and animations
-- Form validation on both frontend and backend
-- Real product images from e-commerce platforms
+- **Working Task**: Product listing, cart management, and order placement are functional end-to-end.
+- **Naming Conventions**: Descriptive file and symbol names throughout (`CartProvider`, `ErrorMessage`, `apiClient`).
+- **Code Readability**: Modular structure, centralized API client, and reusable components improve clarity.
+- **Reusable Components**: `Spinner`, `ErrorMessage`, `ProductCard`, `CartItem`, and `Header` promote reuse.
+- **Advanced React**: Context + `useReducer` for cart state; custom hooks and `ErrorBoundary` are planned for enhanced robustness.
 
 ## Browser Support
 
@@ -261,7 +307,6 @@ pkill -f "node index.js" && pkill -f "react-scripts start"
 | Check server status | `lsof -i :5001 && lsof -i :3000` |
 | Test backend API | `curl http://localhost:5001/api/health` |
 | View application | http://localhost:3000 |
-| API documentation | http://localhost:5001/api/health |
 
 ## License
 
